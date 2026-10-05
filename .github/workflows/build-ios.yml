@@ -11,21 +11,16 @@ jobs:
       - run: bun install
       - run: bun run build
       - run: bunx cap sync ios
-      - name: List schemes
-        run: |
-          cd ios
-          xcodebuild -list   
       - name: Build unsigned IPA
         run: |
           cd ios
           xcodebuild archive \
-            -workspace JustAgram.xcworkspace \
-            -scheme JustAgram \
+            -workspace App/App.xcworkspace \
+            -scheme App \
             -destination 'generic/platform=iOS' \
             -archivePath build/JustAgram.xcarchive \
             CODE_SIGNING_ALLOWED=NO \
             SKIP_INSTALL=NO
-          # Package into IPA
           mkdir -p build/ipa/Payload
           cp -r build/JustAgram.xcarchive/Products/Applications/*.app build/ipa/Payload/
           cd build/ipa
