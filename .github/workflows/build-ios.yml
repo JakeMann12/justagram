@@ -15,7 +15,7 @@ jobs:
         run: |
           cd ios
           xcodebuild archive \
-            -workspace App/App.xcworkspace \
+            -project App/App.xcodeproj \
             -scheme App \
             -destination 'generic/platform=iOS' \
             -archivePath build/JustAgram.xcarchive \
