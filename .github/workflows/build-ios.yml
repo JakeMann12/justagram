@@ -11,6 +11,10 @@ jobs:
       - run: bun install
       - run: bun run build
       - run: bunx cap sync ios
+      - name: List schemes
+        run: |
+          cd ios
+          xcodebuild -list   
       - name: Build unsigned IPA
         run: |
           cd ios
